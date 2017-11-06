@@ -1,0 +1,344 @@
+﻿生成启动时间为 2017-11-06 11:57:59。
+     1>项目“G:\ST_PTTClient\ST_PTTClient\ST_PTTClient.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Release\ST_PTTClient.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\tao\C++\ST_PTTClient\src /ID:\tao\C++\ST_PTTClient\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D _WINDOWS /D HAVE_CONFIG_H /D NDEBUG /D _AFXDLL /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ..\src\A2NLSF.c ..\src\analysis.c ..\src\ana_filt_bank_1.c ..\src\apply_sine_window_FIX.c ..\src\autocorr_FIX.c ..\src\bands.c ..\src\biquad_alt.c ..\src\burg_modified_FIX.c ..\src\bwexpander.c ..\src\bwexpander_32.c ..\src\celt.c ..\src\celt_decoder.c ..\src\celt_encoder.c ..\src\celt_lpc.c ..\src\check_control_input.c ..\src\CNG.c ..\src\code_signs.c ..\src\control_audio_bandwidth.c ..\src\control_codec.c ..\src\control_SNR.c ..\src\corrMatrix_FIX.c ..\src\cwrs.c ..\src\debug.c ..\src\decoder_set_fs.c ..\src\decode_core.c ..\src\decode_frame.c ..\src\decode_indices.c ..\src\decode_parameters.c ..\src\decode_pitch.c ..\src\decode_pulses.c ..\src\dec_API.c ..\src\encode_frame_FIX.c ..\src\encode_indices.c ..\src\encode_pulses.c ..\src\enc_API.c ..\src\entcode.c ..\src\entdec.c ..\src\entenc.c ..\src\find_LPC_FIX.c ..\src\find_LTP_FIX.c ..\src\find_pitch_lags_FIX.c ..\src\find_pred_coefs_FIX.c ..\src\gain_quant.c ..\src\HP_variable_cutoff.c ..\src\init_decoder.c ..\src\init_encoder.c ..\src\inner_prod_aligned.c ..\src\interpolate.c ..\src\k2a_FIX.c ..\src\k2a_Q16_FIX.c ..\src\kiss_fft.c ..\src\laplace.c ..\src\lin2log.c ..\src\log2lin.c ..\src\LPC_analysis_filter.c ..\src\LPC_inv_pred_gain.c ..\src\LP_variable_cutoff.c ..\src\LTP_analysis_filter_FIX.c ..\src\LTP_scale_ctrl_FIX.c ..\src\mathops.c ..\src\mdct.c ..\src\mlp.c ..\src\mlp_data.c ..\src\modes.c ..\src\NLSF2A.c ..\src\NLSF_decode.c ..\src\NLSF_del_dec_quant.c ..\src\NLSF_encode.c ..\src\NLSF_stabilize.c ..\src\NLSF_unpack.c ..\src\NLSF_VQ.c ..\src\NLSF_VQ_weights_laroia.c ..\src\noise_shape_analysis_FIX.c ..\src\NSQ.c ..\src\NSQ_del_dec.c ..\src\opus.c ..\src\opus_decoder.c ..\src\opus_encoder.c ..\src\opus_interface.c ..\src\opus_multistream.c ..\src\opus_multistream_decoder.c ..\src\opus_multistream_encoder.c ..\src\pitch.c ..\src\pitch_analysis_core_FIX.c ..\src\pitch_est_tables.c ..\src\PLC.c ..\src\prefilter_FIX.c ..\src\process_gains_FIX.c ..\src\process_NLSFs.c ..\src\quant_bands.c ..\src\quant_LTP_gains.c ..\src\rate.c ..\src\regularize_correlations_FIX.c ..\src\repacketizer.c ..\src\resampler.c ..\src\resampler_down2.c ..\src\resampler_down2_3.c ..\src\resampler_private_AR2.c ..\src\resampler_private_down_FIR.c ..\src\resampler_private_IIR_FIR.c ..\src\resampler_private_up2_HQ.c ..\src\resampler_rom.c ..\src\residual_energy16_FIX.c ..\src\residual_energy_FIX.c ..\src\schur64_FIX.c ..\src\schur_FIX.c ..\src\shell_coder.c ..\src\sigm_Q15.c ..\src\solve_LS_FIX.c ..\src\sort.c ..\src\stereo_decode_pred.c ..\src\stereo_encode_pred.c ..\src\stereo_find_predictor.c ..\src\stereo_LR_to_MS.c ..\src\stereo_MS_to_LR.c ..\src\stereo_quant_pred.c ..\src\sum_sqr_shift.c ..\src\tables_gain.c ..\src\tables_LTP.c ..\src\tables_NLSF_CB_NB_MB.c ..\src\tables_NLSF_CB_WB.c ..\src\tables_other.c ..\src\tables_pitch_lag.c ..\src\tables_pulses_per_block.c ..\src\table_LSF_cos.c ..\src\VAD.c ..\src\vector_ops_FIX.c ..\src\vq.c ..\src\VQ_WMat_EC.c ..\src\warped_autocorrelation_FIX.c
+         A2NLSF.c
+         analysis.c
+         ana_filt_bank_1.c
+         apply_sine_window_FIX.c
+         autocorr_FIX.c
+         bands.c
+         biquad_alt.c
+         burg_modified_FIX.c
+         bwexpander.c
+         bwexpander_32.c
+         celt.c
+         celt_decoder.c
+         celt_encoder.c
+         celt_lpc.c
+         check_control_input.c
+         CNG.c
+         code_signs.c
+         control_audio_bandwidth.c
+         control_codec.c
+         control_SNR.c
+         正在编译...
+         corrMatrix_FIX.c
+         cwrs.c
+         debug.c
+         decoder_set_fs.c
+         decode_core.c
+         decode_frame.c
+         decode_indices.c
+         decode_parameters.c
+         decode_pitch.c
+         decode_pulses.c
+         dec_API.c
+         encode_frame_FIX.c
+         encode_indices.c
+         encode_pulses.c
+         enc_API.c
+         entcode.c
+         entdec.c
+         entenc.c
+         find_LPC_FIX.c
+         find_LTP_FIX.c
+         正在编译...
+         find_pitch_lags_FIX.c
+         find_pred_coefs_FIX.c
+         gain_quant.c
+         HP_variable_cutoff.c
+         init_decoder.c
+         init_encoder.c
+         inner_prod_aligned.c
+         interpolate.c
+         k2a_FIX.c
+         k2a_Q16_FIX.c
+         kiss_fft.c
+         laplace.c
+         lin2log.c
+         log2lin.c
+         LPC_analysis_filter.c
+         LPC_inv_pred_gain.c
+         LP_variable_cutoff.c
+         LTP_analysis_filter_FIX.c
+         LTP_scale_ctrl_FIX.c
+         mathops.c
+         正在编译...
+         mdct.c
+         mlp.c
+         mlp_data.c
+         modes.c
+         NLSF2A.c
+         NLSF_decode.c
+         NLSF_del_dec_quant.c
+         NLSF_encode.c
+         NLSF_stabilize.c
+         NLSF_unpack.c
+         NLSF_VQ.c
+         NLSF_VQ_weights_laroia.c
+         noise_shape_analysis_FIX.c
+         NSQ.c
+         NSQ_del_dec.c
+         opus.c
+         opus_decoder.c
+         opus_encoder.c
+         opus_interface.c
+     1>..\src\opus_interface.c(405): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         opus_multistream.c
+         正在编译...
+         opus_multistream_decoder.c
+         opus_multistream_encoder.c
+         pitch.c
+         pitch_analysis_core_FIX.c
+         pitch_est_tables.c
+         PLC.c
+         prefilter_FIX.c
+         process_gains_FIX.c
+         process_NLSFs.c
+         quant_bands.c
+         quant_LTP_gains.c
+         rate.c
+         regularize_correlations_FIX.c
+         repacketizer.c
+         resampler.c
+         resampler_down2.c
+         resampler_down2_3.c
+         resampler_private_AR2.c
+         resampler_private_down_FIR.c
+         resampler_private_IIR_FIR.c
+         正在编译...
+         resampler_private_up2_HQ.c
+         resampler_rom.c
+         residual_energy16_FIX.c
+         residual_energy_FIX.c
+         schur64_FIX.c
+         schur_FIX.c
+         shell_coder.c
+         sigm_Q15.c
+         solve_LS_FIX.c
+         sort.c
+         stereo_decode_pred.c
+         stereo_encode_pred.c
+         stereo_find_predictor.c
+         stereo_LR_to_MS.c
+         stereo_MS_to_LR.c
+         stereo_quant_pred.c
+         sum_sqr_shift.c
+         tables_gain.c
+         tables_LTP.c
+         tables_NLSF_CB_NB_MB.c
+         正在编译...
+         tables_NLSF_CB_WB.c
+         tables_other.c
+         tables_pitch_lag.c
+         tables_pulses_per_block.c
+         table_LSF_cos.c
+         VAD.c
+         vector_ops_FIX.c
+         vq.c
+         VQ_WMat_EC.c
+         warped_autocorrelation_FIX.c
+         D:\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\tao\C++\ST_PTTClient\src /ID:\tao\C++\ST_PTTClient\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D _WINDOWS /D HAVE_CONFIG_H /D NDEBUG /D _AFXDLL /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AudioPlay.cpp AudioPlayExp.cpp AudioRecord.cpp ClientChannelInfo.cpp ClientSocket.cpp ClientUdpSocket.cpp ClientUserInfo.cpp CPublic.cpp explorer1.cpp PTTClientControl.cpp PTTOpus.cpp ST_PTTClient.cpp ST_PTTClientDlg.cpp
+         AudioPlay.cpp
+     1>AudioPlay.cpp(21): warning C4018: “>”: 有符号/无符号不匹配
+     1>AudioPlay.cpp(32): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : 参见“sscanf”的声明
+     1>AudioPlay.cpp(35): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : 参见“fopen”的声明
+         AudioPlayExp.cpp
+         AudioRecord.cpp
+     1>AudioRecord.cpp(102): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : 参见“sscanf”的声明
+     1>AudioRecord.cpp(106): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : 参见“fopen”的声明
+         ClientChannelInfo.cpp
+         ClientSocket.cpp
+     1>ClientSocket.cpp(11): warning C4081: 应输入“newline”；找到“;”
+     1>ClientSocket.cpp(68): warning C4018: “<”: 有符号/无符号不匹配
+     1>ClientSocket.cpp(38): warning C4101: “count”: 未引用的局部变量
+         ClientUdpSocket.cpp
+         ClientUserInfo.cpp
+         CPublic.cpp
+         explorer1.cpp
+         PTTClientControl.cpp
+     1>PTTClientControl.cpp(256): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
+     1>PTTClientControl.cpp(433): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
+     1>PTTClientControl.cpp(505): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
+     1>PTTClientControl.cpp(507): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
+         PTTOpus.cpp
+     1>PTTOpus.cpp(20): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Microsoft Visual Studio 10.0\VC\include\time.inl(112) : 参见“localtime”的声明
+     1>PTTOpus.cpp(44): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : 参见“sscanf”的声明
+     1>PTTOpus.cpp(48): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : 参见“fopen”的声明
+     1>PTTOpus.cpp(35): warning C4101: “err”: 未引用的局部变量
+         ST_PTTClient.cpp
+         ST_PTTClientDlg.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D NDEBUG /D _AFXDLL /l"0x0804" /IRelease\ /nologo /fo"Release\ST_PTTClient.res" ST_PTTClient.rc 
+       Link:
+         D:\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\ST_PTTClient\Release\ST_PTTClient.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:D:\tao\C++\ST_PTTClient\lib SDL2.lib SDL2main.lib /MANIFEST /ManifestFile:"Release\ST_PTTClient.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"G:\ST_PTTClient\Release\ST_PTTClient.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\ST_PTTClient\Release\ST_PTTClient.lib" /MACHINE:X86 Release\ST_PTTClient.res
+         Release\A2NLSF.obj
+         Release\analysis.obj
+         Release\ana_filt_bank_1.obj
+         Release\apply_sine_window_FIX.obj
+         Release\autocorr_FIX.obj
+         Release\bands.obj
+         Release\biquad_alt.obj
+         Release\burg_modified_FIX.obj
+         Release\bwexpander.obj
+         Release\bwexpander_32.obj
+         Release\celt.obj
+         Release\celt_decoder.obj
+         Release\celt_encoder.obj
+         Release\celt_lpc.obj
+         Release\check_control_input.obj
+         Release\CNG.obj
+         Release\code_signs.obj
+         Release\control_audio_bandwidth.obj
+         Release\control_codec.obj
+         Release\control_SNR.obj
+         Release\corrMatrix_FIX.obj
+         Release\cwrs.obj
+         Release\debug.obj
+         Release\decoder_set_fs.obj
+         Release\decode_core.obj
+         Release\decode_frame.obj
+         Release\decode_indices.obj
+         Release\decode_parameters.obj
+         Release\decode_pitch.obj
+         Release\decode_pulses.obj
+         Release\dec_API.obj
+         Release\encode_frame_FIX.obj
+         Release\encode_indices.obj
+         Release\encode_pulses.obj
+         Release\enc_API.obj
+         Release\entcode.obj
+         Release\entdec.obj
+         Release\entenc.obj
+         Release\find_LPC_FIX.obj
+         Release\find_LTP_FIX.obj
+         Release\find_pitch_lags_FIX.obj
+         Release\find_pred_coefs_FIX.obj
+         Release\gain_quant.obj
+         Release\HP_variable_cutoff.obj
+         Release\init_decoder.obj
+         Release\init_encoder.obj
+         Release\inner_prod_aligned.obj
+         Release\interpolate.obj
+         Release\k2a_FIX.obj
+         Release\k2a_Q16_FIX.obj
+         Release\kiss_fft.obj
+         Release\laplace.obj
+         Release\lin2log.obj
+         Release\log2lin.obj
+         Release\LPC_analysis_filter.obj
+         Release\LPC_inv_pred_gain.obj
+         Release\LP_variable_cutoff.obj
+         Release\LTP_analysis_filter_FIX.obj
+         Release\LTP_scale_ctrl_FIX.obj
+         Release\mathops.obj
+         Release\mdct.obj
+         Release\mlp.obj
+         Release\mlp_data.obj
+         Release\modes.obj
+         Release\NLSF2A.obj
+         Release\NLSF_decode.obj
+         Release\NLSF_del_dec_quant.obj
+         Release\NLSF_encode.obj
+         Release\NLSF_stabilize.obj
+         Release\NLSF_unpack.obj
+         Release\NLSF_VQ.obj
+         Release\NLSF_VQ_weights_laroia.obj
+         Release\noise_shape_analysis_FIX.obj
+         Release\NSQ.obj
+         Release\NSQ_del_dec.obj
+         Release\opus.obj
+         Release\opus_decoder.obj
+         Release\opus_encoder.obj
+         Release\opus_interface.obj
+         Release\opus_multistream.obj
+         Release\opus_multistream_decoder.obj
+         Release\opus_multistream_encoder.obj
+         Release\pitch.obj
+         Release\pitch_analysis_core_FIX.obj
+         Release\pitch_est_tables.obj
+         Release\PLC.obj
+         Release\prefilter_FIX.obj
+         Release\process_gains_FIX.obj
+         Release\process_NLSFs.obj
+         Release\quant_bands.obj
+         Release\quant_LTP_gains.obj
+         Release\rate.obj
+         Release\regularize_correlations_FIX.obj
+         Release\repacketizer.obj
+         Release\resampler.obj
+         Release\resampler_down2.obj
+         Release\resampler_down2_3.obj
+         Release\resampler_private_AR2.obj
+         Release\resampler_private_down_FIR.obj
+         Release\resampler_private_IIR_FIR.obj
+         Release\resampler_private_up2_HQ.obj
+         Release\resampler_rom.obj
+         Release\residual_energy16_FIX.obj
+         Release\residual_energy_FIX.obj
+         Release\schur64_FIX.obj
+         Release\schur_FIX.obj
+         Release\shell_coder.obj
+         Release\sigm_Q15.obj
+         Release\solve_LS_FIX.obj
+         Release\sort.obj
+         Release\stereo_decode_pred.obj
+         Release\stereo_encode_pred.obj
+         Release\stereo_find_predictor.obj
+         Release\stereo_LR_to_MS.obj
+         Release\stereo_MS_to_LR.obj
+         Release\stereo_quant_pred.obj
+         Release\sum_sqr_shift.obj
+         Release\tables_gain.obj
+         Release\tables_LTP.obj
+         Release\tables_NLSF_CB_NB_MB.obj
+         Release\tables_NLSF_CB_WB.obj
+         Release\tables_other.obj
+         Release\tables_pitch_lag.obj
+         Release\tables_pulses_per_block.obj
+         Release\table_LSF_cos.obj
+         Release\VAD.obj
+         Release\vector_ops_FIX.obj
+         Release\vq.obj
+         Release\VQ_WMat_EC.obj
+         Release\warped_autocorrelation_FIX.obj
+         Release\AudioPlay.obj
+         Release\AudioPlayExp.obj
+         Release\AudioRecord.obj
+         Release\ClientChannelInfo.obj
+         Release\ClientSocket.obj
+         Release\ClientUdpSocket.obj
+         Release\ClientUserInfo.obj
+         Release\CPublic.obj
+         Release\explorer1.obj
+         Release\PTTClientControl.obj
+         Release\PTTOpus.obj
+         Release\ST_PTTClient.obj
+         Release\ST_PTTClientDlg.obj
+            正在创建库 G:\ST_PTTClient\Release\ST_PTTClient.lib 和对象 G:\ST_PTTClient\Release\ST_PTTClient.exp
+         正在生成代码
+     1>g:\st_pttclient\st_pttclient\st_pttclientdlg.cpp(92): warning C4700: 使用了未初始化的局部变量“hItem”
+         已完成代码的生成
+         ST_PTTClient.vcxproj -> G:\ST_PTTClient\Release\ST_PTTClient.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"G:\ST_PTTClient\Release\ST_PTTClient.exe;#1" /manifest Release\ST_PTTClient.exe.intermediate.manifest "D:\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+       FinalizeBuildStatus:
+         正在删除文件“Release\ST_PTTClient.unsuccessfulbuild”。
+         正在对“Release\ST_PTTClient.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“G:\ST_PTTClient\ST_PTTClient\ST_PTTClient.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:02:27.49
