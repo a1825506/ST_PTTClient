@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{62955214-839E-4F47-B983-79A62B7DF18C}</ProjectGuid>
+    <RootNamespace>ST_PTTClient</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;HAVE_CONFIG_H;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\tao\C++\ST_PTTClient\src;D:\tao\C++\ST_PTTClient\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>D:\tao\C++\ST_PTTClient\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>
+      </DelayLoadDLLs>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="geodemo.html" />
+    <None Include="ReadMe.txt" />
+    <None Include="res\accept_normal.bmp" />
+    <None Include="res\bitmap1.bmp" />
+    <None Include="res\bitmap3.bmp" />
+    <None Include="res\channel_active.ico" />
+    <None Include="res\hangup_normal.bmp" />
+    <None Include="res\icon1.ico" />
+    <None Include="res\icon2.ico" />
+    <None Include="res\icons8-user.png" />
+    <None Include="res\map_pressed.png" />
+    <None Include="res\ST_PTTClient.ico" />
+    <None Include="res\ST_PTTClient.rc2" />
+    <None Include="res\user_offline.ico" />
+    <None Include="res\user_offline.jpg" />
+    <None Include="res\user_offline.png" />
+    <None Include="res\user_online.ico" />
+    <None Include="res\user_online.jpg" />
+    <None Include="res\user_online.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\analysis.h" />
+    <ClInclude Include="..\src\API.h" />
+    <ClInclude Include="..\src\arch.h" />
+    <ClInclude Include="..\src\bands.h" />
+    <ClInclude Include="..\src\celt.h" />
+    <ClInclude Include="..\src\celt_lpc.h" />
+    <ClInclude Include="..\src\config.h" />
+    <ClInclude Include="..\src\control.h" />
+    <ClInclude Include="..\src\cpu_support.h" />
+    <ClInclude Include="..\src\cwrs.h" />
+    <ClInclude Include="..\src\debug.h" />
+    <ClInclude Include="..\src\define.h" />
+    <ClInclude Include="..\src\ecintrin.h" />
+    <ClInclude Include="..\src\entcode.h" />
+    <ClInclude Include="..\src\entdec.h" />
+    <ClInclude Include="..\src\entenc.h" />
+    <ClInclude Include="..\src\errors.h" />
+    <ClInclude Include="..\src\fixed_debug.h" />
+    <ClInclude Include="..\src\fixed_generic.h" />
+    <ClInclude Include="..\src\float_cast.h" />
+    <ClInclude Include="..\src\Inlines.h" />
+    <ClInclude Include="..\src\kiss_fft.h" />
+    <ClInclude Include="..\src\laplace.h" />
+    <ClInclude Include="..\src\MacroCount.h" />
+    <ClInclude Include="..\src\MacroDebug.h" />
+    <ClInclude Include="..\src\macros.h" />
+    <ClInclude Include="..\src\main.h" />
+    <ClInclude Include="..\src\mathops.h" />
+    <ClInclude Include="..\src\mdct.h" />
+    <ClInclude Include="..\src\mfrngcod.h" />
+    <ClInclude Include="..\src\mlp.h" />
+    <ClInclude Include="..\src\modes.h" />
+    <ClInclude Include="..\src\opus.h" />
+    <ClInclude Include="..\src\opus_custom.h" />
+    <ClInclude Include="..\src\opus_defines.h" />
+    <ClInclude Include="..\src\opus_inst.h" />
+    <ClInclude Include="..\src\opus_interface.h" />
+    <ClInclude Include="..\src\opus_multistream.h" />
+    <ClInclude Include="..\src\opus_private.h" />
+    <ClInclude Include="..\src\opus_types.h" />
+    <ClInclude Include="..\src\os_support.h" />
+    <ClInclude Include="..\src\pitch.h" />
+    <ClInclude Include="..\src\pitch_est_defines.h" />
+    <ClInclude Include="..\src\PLC.h" />
+    <ClInclude Include="..\src\quant_bands.h" />
+    <ClInclude Include="..\src\rate.h" />
+    <ClInclude Include="..\src\resampler_private.h" />
+    <ClInclude Include="..\src\resampler_rom.h" />
+    <ClInclude Include="..\src\resampler_structs.h" />
+    <ClInclude Include="..\src\SigProc_FIX.h" />
+    <ClInclude Include="..\src\stack_alloc.h" />
+    <ClInclude Include="..\src\static_modes_fixed.h" />
+    <ClInclude Include="..\src\static_modes_float.h" />
+    <ClInclude Include="..\src\structs.h" />
+    <ClInclude Include="..\src\structs_FIX.h" />
+    <ClInclude Include="..\src\tables.h" />
+    <ClInclude Include="..\src\tansig_table.h" />
+    <ClInclude Include="..\src\tuning_parameters.h" />
+    <ClInclude Include="..\src\typedef.h" />
+    <ClInclude Include="..\src\typedefs.h" />
+    <ClInclude Include="..\src\vq.h" />
+    <ClInclude Include="..\src\_kiss_fft_guts.h" />
+    <ClInclude Include="AudioPlay.h" />
+    <ClInclude Include="AudioPlayExp.h" />
+    <ClInclude Include="AudioRecord.h" />
+    <ClInclude Include="ClientChannelInfo.h" />
+    <ClInclude Include="ClientSocket.h" />
+    <ClInclude Include="ClientUdpSocket.h" />
+    <ClInclude Include="ClientUserInfo.h" />
+    <ClInclude Include="CPublic.h" />
+    <ClInclude Include="explorer1.h" />
+    <ClInclude Include="PTTClientControl.h" />
+    <ClInclude Include="PTTOpus.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="ST_PTTClient.h" />
+    <ClInclude Include="ST_PTTClientDlg.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\A2NLSF.c" />
+    <ClCompile Include="..\src\analysis.c" />
+    <ClCompile Include="..\src\ana_filt_bank_1.c" />
+    <ClCompile Include="..\src\apply_sine_window_FIX.c" />
+    <ClCompile Include="..\src\autocorr_FIX.c" />
+    <ClCompile Include="..\src\bands.c" />
+    <ClCompile Include="..\src\biquad_alt.c" />
+    <ClCompile Include="..\src\burg_modified_FIX.c" />
+    <ClCompile Include="..\src\bwexpander.c" />
+    <ClCompile Include="..\src\bwexpander_32.c" />
+    <ClCompile Include="..\src\celt.c" />
+    <ClCompile Include="..\src\celt_decoder.c" />
+    <ClCompile Include="..\src\celt_encoder.c" />
+    <ClCompile Include="..\src\celt_lpc.c" />
+    <ClCompile Include="..\src\check_control_input.c" />
+    <ClCompile Include="..\src\CNG.c" />
+    <ClCompile Include="..\src\code_signs.c" />
+    <ClCompile Include="..\src\control_audio_bandwidth.c" />
+    <ClCompile Include="..\src\control_codec.c" />
+    <ClCompile Include="..\src\control_SNR.c" />
+    <ClCompile Include="..\src\corrMatrix_FIX.c" />
+    <ClCompile Include="..\src\cwrs.c" />
+    <ClCompile Include="..\src\debug.c" />
+    <ClCompile Include="..\src\decoder_set_fs.c" />
+    <ClCompile Include="..\src\decode_core.c" />
+    <ClCompile Include="..\src\decode_frame.c" />
+    <ClCompile Include="..\src\decode_indices.c" />
+    <ClCompile Include="..\src\decode_parameters.c" />
+    <ClCompile Include="..\src\decode_pitch.c" />
+    <ClCompile Include="..\src\decode_pulses.c" />
+    <ClCompile Include="..\src\dec_API.c" />
+    <ClCompile Include="..\src\encode_frame_FIX.c" />
+    <ClCompile Include="..\src\encode_indices.c" />
+    <ClCompile Include="..\src\encode_pulses.c" />
+    <ClCompile Include="..\src\enc_API.c" />
+    <ClCompile Include="..\src\entcode.c" />
+    <ClCompile Include="..\src\entdec.c" />
+    <ClCompile Include="..\src\entenc.c" />
+    <ClCompile Include="..\src\find_LPC_FIX.c" />
+    <ClCompile Include="..\src\find_LTP_FIX.c" />
+    <ClCompile Include="..\src\find_pitch_lags_FIX.c" />
+    <ClCompile Include="..\src\find_pred_coefs_FIX.c" />
+    <ClCompile Include="..\src\gain_quant.c" />
+    <ClCompile Include="..\src\HP_variable_cutoff.c" />
+    <ClCompile Include="..\src\init_decoder.c" />
+    <ClCompile Include="..\src\init_encoder.c" />
+    <ClCompile Include="..\src\inner_prod_aligned.c" />
+    <ClCompile Include="..\src\interpolate.c" />
+    <ClCompile Include="..\src\k2a_FIX.c" />
+    <ClCompile Include="..\src\k2a_Q16_FIX.c" />
+    <ClCompile Include="..\src\kiss_fft.c" />
+    <ClCompile Include="..\src\laplace.c" />
+    <ClCompile Include="..\src\lin2log.c" />
+    <ClCompile Include="..\src\log2lin.c" />
+    <ClCompile Include="..\src\LPC_analysis_filter.c" />
+    <ClCompile Include="..\src\LPC_inv_pred_gain.c" />
+    <ClCompile Include="..\src\LP_variable_cutoff.c" />
+    <ClCompile Include="..\src\LTP_analysis_filter_FIX.c" />
+    <ClCompile Include="..\src\LTP_scale_ctrl_FIX.c" />
+    <ClCompile Include="..\src\mathops.c" />
+    <ClCompile Include="..\src\mdct.c" />
+    <ClCompile Include="..\src\mlp.c" />
+    <ClCompile Include="..\src\mlp_data.c" />
+    <ClCompile Include="..\src\modes.c" />
+    <ClCompile Include="..\src\NLSF2A.c" />
+    <ClCompile Include="..\src\NLSF_decode.c" />
+    <ClCompile Include="..\src\NLSF_del_dec_quant.c" />
+    <ClCompile Include="..\src\NLSF_encode.c" />
+    <ClCompile Include="..\src\NLSF_stabilize.c" />
+    <ClCompile Include="..\src\NLSF_unpack.c" />
+    <ClCompile Include="..\src\NLSF_VQ.c" />
+    <ClCompile Include="..\src\NLSF_VQ_weights_laroia.c" />
+    <ClCompile Include="..\src\noise_shape_analysis_FIX.c" />
+    <ClCompile Include="..\src\NSQ.c" />
+    <ClCompile Include="..\src\NSQ_del_dec.c" />
+    <ClCompile Include="..\src\opus.c" />
+    <ClCompile Include="..\src\opus_decoder.c" />
+    <ClCompile Include="..\src\opus_encoder.c" />
+    <ClCompile Include="..\src\opus_interface.c" />
+    <ClCompile Include="..\src\opus_multistream.c" />
+    <ClCompile Include="..\src\opus_multistream_decoder.c" />
+    <ClCompile Include="..\src\opus_multistream_encoder.c" />
+    <ClCompile Include="..\src\pitch.c" />
+    <ClCompile Include="..\src\pitch_analysis_core_FIX.c" />
+    <ClCompile Include="..\src\pitch_est_tables.c" />
+    <ClCompile Include="..\src\PLC.c" />
+    <ClCompile Include="..\src\prefilter_FIX.c" />
+    <ClCompile Include="..\src\process_gains_FIX.c" />
+    <ClCompile Include="..\src\process_NLSFs.c" />
+    <ClCompile Include="..\src\quant_bands.c" />
+    <ClCompile Include="..\src\quant_LTP_gains.c" />
+    <ClCompile Include="..\src\rate.c" />
+    <ClCompile Include="..\src\regularize_correlations_FIX.c" />
+    <ClCompile Include="..\src\repacketizer.c" />
+    <ClCompile Include="..\src\resampler.c" />
+    <ClCompile Include="..\src\resampler_down2.c" />
+    <ClCompile Include="..\src\resampler_down2_3.c" />
+    <ClCompile Include="..\src\resampler_private_AR2.c" />
+    <ClCompile Include="..\src\resampler_private_down_FIR.c" />
+    <ClCompile Include="..\src\resampler_private_IIR_FIR.c" />
+    <ClCompile Include="..\src\resampler_private_up2_HQ.c" />
+    <ClCompile Include="..\src\resampler_rom.c" />
+    <ClCompile Include="..\src\residual_energy16_FIX.c" />
+    <ClCompile Include="..\src\residual_energy_FIX.c" />
+    <ClCompile Include="..\src\schur64_FIX.c" />
+    <ClCompile Include="..\src\schur_FIX.c" />
+    <ClCompile Include="..\src\shell_coder.c" />
+    <ClCompile Include="..\src\sigm_Q15.c" />
+    <ClCompile Include="..\src\solve_LS_FIX.c" />
+    <ClCompile Include="..\src\sort.c" />
+    <ClCompile Include="..\src\stereo_decode_pred.c" />
+    <ClCompile Include="..\src\stereo_encode_pred.c" />
+    <ClCompile Include="..\src\stereo_find_predictor.c" />
+    <ClCompile Include="..\src\stereo_LR_to_MS.c" />
+    <ClCompile Include="..\src\stereo_MS_to_LR.c" />
+    <ClCompile Include="..\src\stereo_quant_pred.c" />
+    <ClCompile Include="..\src\sum_sqr_shift.c" />
+    <ClCompile Include="..\src\tables_gain.c" />
+    <ClCompile Include="..\src\tables_LTP.c" />
+    <ClCompile Include="..\src\tables_NLSF_CB_NB_MB.c" />
+    <ClCompile Include="..\src\tables_NLSF_CB_WB.c" />
+    <ClCompile Include="..\src\tables_other.c" />
+    <ClCompile Include="..\src\tables_pitch_lag.c" />
+    <ClCompile Include="..\src\tables_pulses_per_block.c" />
+    <ClCompile Include="..\src\table_LSF_cos.c" />
+    <ClCompile Include="..\src\VAD.c" />
+    <ClCompile Include="..\src\vector_ops_FIX.c" />
+    <ClCompile Include="..\src\vq.c" />
+    <ClCompile Include="..\src\VQ_WMat_EC.c" />
+    <ClCompile Include="..\src\warped_autocorrelation_FIX.c" />
+    <ClCompile Include="AudioPlay.cpp" />
+    <ClCompile Include="AudioPlayExp.cpp" />
+    <ClCompile Include="AudioRecord.cpp" />
+    <ClCompile Include="ClientChannelInfo.cpp" />
+    <ClCompile Include="ClientSocket.cpp" />
+    <ClCompile Include="ClientUdpSocket.cpp" />
+    <ClCompile Include="ClientUserInfo.cpp" />
+    <ClCompile Include="CPublic.cpp" />
+    <ClCompile Include="explorer1.cpp" />
+    <ClCompile Include="PTTClientControl.cpp" />
+    <ClCompile Include="PTTOpus.cpp" />
+    <ClCompile Include="ST_PTTClient.cpp" />
+    <ClCompile Include="ST_PTTClientDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ST_PTTClient.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="ST_PTTClient.rc" _x007B_8856F961-340A-11D0-A96B-00C04FD705A2_x007D_="CExplorer1" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
