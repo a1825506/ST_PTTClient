@@ -1,6 +1,8 @@
 #include "StdAfx.h"
 #include "PTTOpus.h"
+#include "CPublic.h"
 #include <time.h>
+
 #include "opus_interface.h"
 CPTTOpus::CPTTOpus(void)
 {
@@ -41,7 +43,7 @@ int CPTTOpus::Opusopen(int compression)
 
 	int complexity=8;
 
-	short length_encoded_buffer = 640;
+	short length_encoded_buffer = 160;
 
 	stream = (unsigned char *)malloc(sizeof(char)*1024);
 
@@ -54,6 +56,22 @@ int CPTTOpus::Opusopen(int compression)
 	 if((fp_output = fopen(outname, "wb+")) == NULL) {
 
 		 printf(" opus: Cannot write file %s.\n", outname);
+
+		 return -1;
+	 }
+	 sscanf("decodcchar2.pcm", "%s", outname2);
+
+	 if((fp_output2 = fopen(outname2, "wb+")) == NULL) {
+
+		 printf(" opus: Cannot write file %s.\n", outname2);
+
+		 return -1;
+	 }
+	 sscanf("decodcchar3.pcm", "%s", outname3);
+
+	 if((fp_output3 = fopen(outname3, "wb+")) == NULL) {
+
+		 printf(" opus: Cannot write file %s.\n", outname3);
 
 		 return -1;
 	 }
@@ -79,15 +97,28 @@ int CPTTOpus::Opusopen(int compression)
 
 int  CPTTOpus::Opusencode(char* databuffer,int size)
 {
+
+   	printf("编码前的长度%d\n",size);
+
 	short dwParam1[80] ={0};// new short[1024];
 
 	char data_buffrt[160]={0};
 
-	strcpy(data_buffrt ,databuffer);
+	memcpy(data_buffrt,databuffer,size);
 
-	memcpy(dwParam1,data_buffrt,80);
+	memcpy(dwParam1,data_buffrt,size);
 
-	stream_len = WebRtcOpus_Encode(EncInst, dwParam1,  80, length_encoded_buffer, stream);
+	fwrite(databuffer, sizeof(char), size, fp_output);
+
+	//fwrite(databuffer, sizeof(char), size, fp_output);
+
+	stream_len = WebRtcOpus_Encode(EncInst, dwParam1,  size, 320, stream);
+
+	WebRtcOpus_Encode
+
+	//err = WebRtcOpus_Decode(DecInst, stream, stream_len, Output, &speechType);
+
+	//fwrite(Output, sizeof(short), err/2, fp_output2);
 
 	if(stream_len<0){
 
@@ -97,7 +128,11 @@ int  CPTTOpus::Opusencode(char* databuffer,int size)
 
 	}else{
 
-			printf("编码后的长度%d\n",stream_len);
+		//编码后的数据再加上RTP头和自定义头共24字节
+
+			printf("解码后的长度%d\n",stream_len);
+		//CPublic::getUdpClientSocket(stream,stream_len);
+
 	}
 		return stream_len;
 }
@@ -115,6 +150,8 @@ int  CPTTOpus::Opusdecode(char databuffer1[],int size)
 	memcpy(stream,databuffer1,size);
 
 	err = WebRtcOpus_Decode(DecInst, stream, size, Output, &speechType);
+
+	fwrite(Output, sizeof(short), err, fp_output);
 
 	if(err<0)
 	{

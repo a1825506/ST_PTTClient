@@ -141,6 +141,8 @@ void CAudioRecord::OnReadData(WPARAM wParam, LPARAM lParam)
 	if (NULL == lpHdr || 0 == lpHdr->dwBytesRecorded)
 		return ;
 
+
+
 	waveInUnprepareHeader(m_hWaveIn, lpHdr, sizeof(WAVEHDR));
 
 	CPublic::getCPTTOpus(lpHdr->lpData,lpHdr->dwBytesRecorded);

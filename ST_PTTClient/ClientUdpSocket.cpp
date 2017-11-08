@@ -44,6 +44,7 @@ void ClientUdpSocket::OnReceive(int nErrorCode)
 
 	     int recelen=ReceiveFrom(recBuf,1024,(SOCKADDR*)&ClientAddr,&len,0);
 
+
 		 char realdata[160]={0};
 
 		memcpy(realdata,recBuf+24,recelen-24);
@@ -57,9 +58,37 @@ void ClientUdpSocket::OnReceive(int nErrorCode)
 {
 		    // AfxMessageBox(buff);
 		     //SendTo(buff,len,CPublic::SERVER_DESTPORT,"139.224.68.157",0);
-		SendTo("23",2,CPublic::SERVER_DESTPORT,"139.224.68.157",0);
+	char datas[36] = {00,00,00, 00, 00 ,00 ,00 ,00 ,00, 00, 00 ,00 ,00, 00 ,00 ,00 ,00 ,00 ,00 ,00, 00, 00 ,00, 00, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+
+	int lenw=sizeof(SOCKADDR_IN);
+
+	int err = SendTo(datas,36,(SOCKADDR *)&ClientAddr,sizeof(ClientAddr),0);
+
+	// int err= SendTo(datas,36,20087,"127.0.0.1",0);
+
+
+	    printf("发送结果 %d \n",err);
 
 		CSocket::OnSend(nErrorCode);
+ }
+
+ void ClientUdpSocket::setSendData(unsigned char *data,int len)
+ {
+	 //char datas[36] = {00,00,00, 00, 00 ,00 ,00 ,00 ,00, 00, 00 ,00 ,00, 00 ,00 ,00 ,00 ,00 ,00 ,00, 00, 00 ,00, 00, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+  
+	 //int lenw=sizeof(SOCKADDR_IN);
+	 //int err= SendTo(data,len,(SOCKADDR *)&ClientAddr,lenw,0);
+	 // printf("发送结果 %d \n",lenw);
+	// OnSend(1);
+	 int lenw=sizeof(SOCKADDR_IN);
+
+	 int err = SendTo(data,len,(SOCKADDR *)&ClientAddr,sizeof(ClientAddr),0);
+
+	 // int err= SendTo(datas,36,20087,"127.0.0.1",0);
+
+
+	 printf("发送结果 %d \n",err);
+
  }
 
 

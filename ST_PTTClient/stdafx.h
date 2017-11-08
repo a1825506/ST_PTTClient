@@ -16,6 +16,9 @@
 
 #define WM_UPLOADCHANNELID WM_USER+1001
 
+
+
+
 #ifndef VC_EXTRALEAN
 #define VC_EXTRALEAN            // 从 Windows 头中排除极少使用的资料
 #endif
@@ -44,6 +47,15 @@
 
 #include <afxcontrolbars.h>     // 功能区和控件条的 MFC 支持
 #include <afxsock.h>
+
+
+#include <comdef.h>//初始化一下com口
+
+#include "GdiPlus.h"
+
+using namespace Gdiplus;
+
+#pragma comment(lib,"gdiplus.lib")
  
 
 

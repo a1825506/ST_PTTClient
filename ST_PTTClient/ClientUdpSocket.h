@@ -13,6 +13,7 @@ public:
        virtual void OnReceive(int nErrorCode);
 	    virtual void OnSend(int nErrorCode);
 	   CPTTOpus* pTTOpus;
+	    void setSendData(unsigned char *data,int len);
 	 
 };
 

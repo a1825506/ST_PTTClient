@@ -27,11 +27,15 @@ public:
 
 	static void sendChannelSwitchOrder();
 
+	static void Call();
+
 	static int get_local_ip(int& ip);
 
 	static void setClientSocket(ClientSocket* pSock);
 
 	static void setUdpClientSocket(ClientUdpSocket* pUdpSocket);
+
+	static void getUdpClientSocket(unsigned char* buffer,int len);
 
 	static void setCPTTOpus(CPTTOpus* pTTOpus);
 

@@ -7,7 +7,6 @@
 #include "ST_PTTClientDlg.h"
 #include "PTTClientControl.h"
 #include "afxdialogex.h"
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -38,6 +37,7 @@ void CST_PTTClientDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CST_PTTClientDlg, CDialogEx)
+	
 	  ON_WM_PAINT()
 	  ON_WM_QUERYDRAGICON()
 	  ON_WM_SIZE()
@@ -78,11 +78,6 @@ BOOL CST_PTTClientDlg::OnInitDialog()
 
 	m_btnHangout.LoadBitmaps(IDB_BITMAP2,NULL);
 
-	//CStatic* pWnd = (CStatic*)GetDlgItem(IDC_STATIC_MAP); // 得到 Picture Control 句柄  
-	//CImage image;  
-	//image.Load("map_pressed.png");  
-	//HBITMAP hBmp = image.Detach();  
-	//pWnd->SetBitmap(hBmp);  
 
 
 	HTREEITEM hItem,hSubItem,hThirdItem;
@@ -160,9 +155,9 @@ BOOL CST_PTTClientDlg::OnInitDialog()
 
 	hSubItem = m_tc.InsertItem("频道2",1,1,hItem,hSubItem);
 
-	CRect rect;
-	m_Map.GetClientRect(&rect);
-	m_Map.ScreenToClient(&rect);
+	CRect rect1;
+	m_Map.GetClientRect(&rect1);
+	m_Map.ScreenToClient(&rect1);
 	m_Map.SetWindowPos(NULL,0,0,m_rect.Width(),m_rect.Height(),SWP_NOZORDER|SWP_NOMOVE);
 	m_Map.Navigate("D:\\tao\\C++\\ST_PTTClient\\ST_PTTClient\\geodemo.html",NULL,NULL,NULL,NULL);
 
@@ -178,6 +173,8 @@ BOOL CST_PTTClientDlg::OnInitDialog()
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
+
+
 
 // 如果向对话框添加最小化按钮，则需要下面的代码
 //  来绘制该图标。对于使用文档/视图模型的 MFC 应用程序，
@@ -225,30 +222,82 @@ void CST_PTTClientDlg::OnSize(UINT nType, int cx, int cy)
 	}
 }
 
+BOOL ImageFromIDResource(UINT nID, LPCTSTR sTR,Image *&pImg)  
+{  
+
+	HINSTANCE hInst = AfxGetResourceHandle();  
+	HRSRC hRsrc = ::FindResource (hInst,MAKEINTRESOURCE(nID),sTR); // type  
+	if (!hRsrc)  
+		return FALSE;  
+	// load resource into memory  
+	DWORD len = SizeofResource(hInst, hRsrc);  
+	BYTE* lpRsrc = (BYTE*)LoadResource(hInst, hRsrc);  
+	if (!lpRsrc)  
+		return FALSE;  
+	// Allocate global memory on which to create stream  
+	HGLOBAL m_hMem = GlobalAlloc(GMEM_FIXED, len);  
+	BYTE* pmem = (BYTE*)GlobalLock(m_hMem);  
+	memcpy(pmem,lpRsrc,len);  
+	GlobalUnlock(m_hMem);  
+	IStream* pstm;  
+	CreateStreamOnHGlobal(m_hMem,FALSE,&pstm);  
+	// load from stream  
+	pImg=Gdiplus::Image::FromStream(pstm);  
+	// free/release stuff  
+	pstm->Release();  
+	FreeResource(lpRsrc);  
+	GlobalFree(m_hMem);  
+	return TRUE;  
+}  
+
+
 void CST_PTTClientDlg::OnPaint()
 {
-	if (IsIconic())
-	{
+	//if (IsIconic())
+//	{
 		CPaintDC dc(this); // 用于绘制的设备上下文
 
-		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
+		//SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-		// 使图标在工作区矩形中居中
-		int cxIcon = GetSystemMetrics(SM_CXICON);
-		int cyIcon = GetSystemMetrics(SM_CYICON);
-		CRect rect;
-		GetClientRect(&rect);
-		int x = (rect.Width() - cxIcon + 1) / 2;
-		int y = (rect.Height() - cyIcon + 1) / 2;
+		//// 使图标在工作区矩形中居中
+		//int cxIcon = GetSystemMetrics(SM_CXICON);
+		//int cyIcon = GetSystemMetrics(SM_CYICON);
+		//CRect rect;
+		//GetClientRect(&rect);
+		//int x = (rect.Width() - cxIcon + 1) / 2;
+		//int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// 绘制图标
-		dc.DrawIcon(x, y, m_hIcon);
-	}
-	else
-	{
-		CDialogEx::OnPaint();
-	}
+		//CClientDC *pDC = new CClientDC(GetDlgItem(IDC_STATIC_BG));  
+
+		//CRect rect;  
+
+		//GetDlgItem(IDC_STATIC_BG)->GetWindowRect(&rect);  
+
+		//Graphics graphics(pDC->m_hDC); // Create a GDI+ graphics object  
+
+		//Image *pimage; // Construct an image  
+
+		//ImageFromIDResource(IDB_PNG2,"PNG",pimage);  
+
+		//graphics.DrawImage(pimage, 0, 0,pimage->GetWidth(), pimage->GetHeight());  
+
+		//delete pDC;  
+
+		//
+
+		//// 绘制图标
+		//dc.DrawIcon(x, y, m_hIcon);
+
+	//}
+	//else
+	//{
+	//	CDialogEx::OnPaint();
+	//}
 }
+
+
+
+
 
 //当用户拖动最小化窗口时系统调用此函数取得光标
 //显示。
@@ -265,6 +314,7 @@ void CST_PTTClientDlg::OnTimer(UINT nIDEvent)
 		
 		GetDlgItem(IDC_PPTTALK)->SetWindowText("松开停止讲话");
 
+		CPublic::Call();
 
 	}
 }
@@ -272,10 +322,11 @@ BOOL CST_PTTClientDlg::PreTranslateMessage(MSG* pMsg)
 {
 	if(pMsg->message == WM_LBUTTONDOWN && pMsg->hwnd == GetDlgItem(IDC_PPTTALK)->m_hWnd){
 		//按下对讲按钮
-		SetTimer(4,20,NULL);
+		SetTimer(4,100,NULL);
 		//开启音频采集线程。
 		m_pAudioPlayer = new CAudioRecord();
 		m_pAudioPlayer->Start();
+
 	}
 	if(pMsg->message == WM_LBUTTONUP&& pMsg->hwnd == GetDlgItem(IDC_PPTTALK)->m_hWnd){
 		//抬起对讲按钮
@@ -393,8 +444,10 @@ LRESULT CST_PTTClientDlg::DEALWITH_CALLUSER(WPARAM wParam,LPARAM lparam)
 		m_CallStatus.SetWindowText("通话中,按住对讲按钮讲话");
 
 
-	}else if(flag==WM_UPLOADCHANNELID){
-		//上报当前频道的ID。
+	}else if(flag==4){
+
+			
+
 	}else if(flag==3){
 
 		m_CallStatus.SetWindowText("user1 正在呼叫您");
@@ -413,5 +466,14 @@ LRESULT CST_PTTClientDlg::DEALWITH_CALLUSER(WPARAM wParam,LPARAM lparam)
 
 void CST_PTTClientDlg::OnBnClickedButreceive()
 {
-	// TODO: 在此添加控件通知处理程序代码
+	// 发送接听命令
+
+
+	m_CallStatus.SetWindowText("通话中，按住对讲按钮讲话");
+
+	m_btnReceive.ShowWindow(SW_HIDE);
+
+	CPublic::sendChannelSwitchOrder();
+
+
 }

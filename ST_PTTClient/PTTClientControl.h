@@ -5,6 +5,7 @@
 #include "ClientChannelInfo.h"
 #include "ClientUdpSocket.h"
 #include "CPublic.h"
+#include "ST_EasyRTP.h"
 // PTTClientControl 对话框
 
 class PTTClientControl : public CDialogEx
@@ -37,11 +38,13 @@ public:
 	
 	ClientSocket* pSock;         
 	ClientUdpSocket* pUDPSocket;// 客户端套接字指针对象
+	CST_EasyRTP* easyRTP;
 	afx_msg void OnBnClickedButtonLogin();
 	afx_msg void OnBnClickedButtonExit();
 	afx_msg LRESULT DEALWITH_CLOSEDIALOG(WPARAM wParam,LPARAM lparam);
 		void InitConsoleWindow();
 	int bytesToInt(char* bytes,int size);
 	virtual BOOL PreTranslateMessage(MSG* pMsg); 
+	 static UINT MyThreadFunction( LPVOID pParam );
 	//防止按下enter、esc时退出程序
 };

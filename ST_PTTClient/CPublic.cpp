@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "CPublic.h"
+
 #include <vector>
 using namespace std;
 
@@ -55,11 +56,67 @@ void CPublic::setUdpClientSocket(ClientUdpSocket* pUdpSocket)
 	CPublic::pUdpSocket=pUdpSocket;
 }
 
+void CPublic::getUdpClientSocket(unsigned char* buffer,int len)
+{
+
+	unsigned char* newdata = new unsigned char[len+12];
+
+	//char RTPHead[12]={(byte)128,0,0,0,0,0,0,0,0,0,0,0};
+
+	//自定义头包括4字节用户ID，4字节群组ID,4字节预留
+	char head[12] = {0};
+
+	char channel_id[4];//当前频道ID
+
+	channel_id[0]  = CPublic::currentChannelID >> 24;     
+
+	channel_id[1] = CPublic::currentChannelID >> 16;
+
+	channel_id[2] = CPublic::currentChannelID >> 8;
+
+	channel_id[3] = CPublic::currentChannelID;
+
+	char byte_id[4];
+
+	byte_id[0]  = CPublic::currentUserID >> 24;     
+
+	byte_id[1] = CPublic::currentUserID >> 16;
+
+	byte_id[2] = CPublic::currentUserID >> 8;
+
+	byte_id[3] = CPublic::currentUserID;
+
+	
+
+	memcpy(head, byte_id,4);
+
+	memcpy(head+4, channel_id,4);
+
+
+
+	memcpy(newdata, head,12);
+
+	memcpy(newdata+12, buffer,len);
+
+
+
+
+	if(CPublic::pUdpSocket){
+
+		CPublic::pUdpSocket->setSendData(newdata,len+12);
+	}else{
+		printf("发送数据失败失败%d\n",len);
+
+	}
+}
+
 
 void CPublic::setCPTTOpus(CPTTOpus* pTTOpus)
 {
 	CPublic::pTTOpus=pTTOpus;
 }
+
+
 
 void CPublic::getCPTTOpus(char* buffer,int len)
 {
@@ -73,6 +130,8 @@ void CPublic::getCPTTOpus(char* buffer,int len)
 			printf("编码数据失败%d\n",len);
 
 	}
+
+
 
 
 
@@ -230,7 +289,7 @@ void CPublic::tempTalkOrder(CString channel_name, CString channel_list)
 //上报当前频道的ID
 void CPublic::uploadChannelid()
 {
-	printf("上报当前频道ID\n");
+
 
 	ClientChannelInfo clientChannelInfo;
 
@@ -242,11 +301,15 @@ void CPublic::uploadChannelid()
 
 			CString user_channel = clientChannelInfo.getChannelname();
 
-			if(user_channel==CPublic::currentChannelName){
+			
+
+			if(user_channel.Compare(CPublic::currentChannelName)==0){
 
 				CPublic::currentChannelName==user_channel;
 
 				CPublic::currentChannelID = clientChannelInfo.getChannelid();
+
+				printf("上报当前频道ID %d",CPublic::currentChannelID);
 			}
 	}
 	 char head[14]={0x68,0x00,0x08,0x68,0x00,0x00,0x00,0x08,0x00,0x00,0x00,0x08,0x00,0x16};
@@ -279,6 +342,7 @@ void CPublic::uploadChannelid()
 
 void CPublic::sendChannelSwitchOrder()
 {
+
 	
 	char srcChannelid[4];//当前频道ID
 
@@ -289,6 +353,9 @@ void CPublic::sendChannelSwitchOrder()
 	srcChannelid[2] = CPublic::currentChannelID >> 8;
 
 	srcChannelid[3] = CPublic::currentChannelID;
+
+	printf("当前频道id:%d\n",CPublic::currentChannelID);
+
 
 
 	char desChannelid[4];//需要切换的频道ID
@@ -301,6 +368,8 @@ void CPublic::sendChannelSwitchOrder()
 
 	desChannelid[3] = CPublic::switchChannelID;
 
+		printf("需要切换的临时频道id:%d\n",CPublic::switchChannelID);
+
 	char userid[4];
 
 	userid[0]  = CPublic::currentUserID >> 24;     
@@ -310,6 +379,8 @@ void CPublic::sendChannelSwitchOrder()
 	userid[2] = CPublic::currentUserID >> 8;
 
 	userid[3] = CPublic::currentUserID;
+
+	printf("当前用户id:%d\n",CPublic::currentUserID);
 
 	char head[22] = {0x68,0x00,0x10,0x68,0x00,0x00,0x00,0x39,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 	
@@ -331,6 +402,58 @@ void CPublic::sendChannelSwitchOrder()
 	head[21]=0x16;
 
 	CPublic::pSock->SendMSG(head,22);
+
+
+}
+
+//*申请频道过程，持续发
+void CPublic::Call()
+{
+	 char order[19] ={0};
+
+	char notifty[8] = {0x68,0x00,0x0d,0x68,0x00,0x00,0x00,(byte)0x91};
+
+	char userid[4];
+
+	userid[0]  = CPublic::currentUserID >> 24;     
+
+	userid[1] = CPublic::currentUserID >> 16;
+
+	userid[2] = CPublic::currentUserID >> 8;
+
+	userid[3] = CPublic::currentUserID;
+	
+	char channelid[4];//当前频道ID
+
+	channelid[0]  = CPublic::currentChannelID >> 24;     
+
+	channelid[1] = CPublic::currentChannelID >> 16;
+
+	channelid[2] = CPublic::currentChannelID >> 8;
+
+	channelid[3] = CPublic::currentChannelID;
+	
+	char flag[1]={1};
+
+	memcpy(order, notifty,8);
+
+	memcpy(order+8, userid,4);
+
+    memcpy(order+12, channelid,4);
+
+	memcpy(order+16, flag,1);
+
+	int sum=0;
+
+	for(int i=4;i<17;i++){
+
+		sum+=order[i];
+	}
+	order[17]=(byte)sum;
+
+	order[18]=0x16;
+
+	CPublic::pSock->SendMSG(order,19);
 }
 
 int CPublic::get_local_ip(int& ip) {

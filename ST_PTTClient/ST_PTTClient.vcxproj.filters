@@ -68,6 +68,18 @@
     <None Include="res\map_pressed.png">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="res\bitmap4.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\map_pressed.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\png1.png">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\bkgrd_navi.png">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ST_PTTClient.h">
@@ -302,6 +314,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="AudioRecord.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ST_EasyRTP.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ST_EasyOpus.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -733,6 +751,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="AudioRecord.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_EasyRTP.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_EasyOpus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

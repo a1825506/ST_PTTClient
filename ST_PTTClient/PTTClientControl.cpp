@@ -154,6 +154,25 @@ void PTTClientControl::OnBnClickedButtonLogin()
 	}
 }
 
+UINT PTTClientControl:: MyThreadFunction( LPVOID pParam )
+{
+	//函数体
+	CST_EasyRTP* easy_RTP = (CST_EasyRTP*)pParam;
+	
+	if(easy_RTP){
+
+		easy_RTP->RTPReceive();
+		printf("接收线程启动成功\n");
+	}else{
+		printf("接收线程启动失败\n");
+	}
+
+	
+
+	return 0;
+}
+
+
 LRESULT PTTClientControl::DEALWITH_CLOSEDIALOG(WPARAM wParam,LPARAM lparam)
 {
 	char * info = (char *)lparam;
@@ -257,7 +276,7 @@ LRESULT PTTClientControl::DEALWITH_CLOSEDIALOG(WPARAM wParam,LPARAM lparam)
 
 				  clientUserInfo.setUserid(int_userid);
 			
-				printf("用户ID%s：\n",str);
+				printf("用户ID%d：\n",int_userid);
 
 				char byte_userbans[4];
 
@@ -434,7 +453,7 @@ LRESULT PTTClientControl::DEALWITH_CLOSEDIALOG(WPARAM wParam,LPARAM lparam)
 
 			clientChannelInfo.setChannelid(int_groupid);
 
-			printf("频道ID :%s\n",str);
+			printf("频道ID :%d\n",int_groupid);
 
 			char byte_grouptype[4];
 
@@ -473,17 +492,21 @@ LRESULT PTTClientControl::DEALWITH_CLOSEDIALOG(WPARAM wParam,LPARAM lparam)
 
 			CPublic::V_ClientChannelInfo.push_back(clientChannelInfo);
 			//上报当前频道的ID
-			dlg.SendMessage(WM_CALLUSER,WM_UPLOADCHANNELID,NULL);
-
 		}
+
+		CPublic::uploadChannelid();
 
 	 	this->EndDialog(SW_HIDE); //隐藏父窗体   
 
 		INT_PTR nResponse = dlg.DoModal();//显示子窗体
 
-	}else if(info[7]==16){
+	}else if(info[7]==8){
 
-		 printf("通知帧返回信息");
+	 printf("上班当前ID返回信息\n");
+
+    }else if(info[7]==16){
+
+		 printf("通知帧返回信息\n");
 
 		 char destip[4];
 
@@ -501,27 +524,34 @@ LRESULT PTTClientControl::DEALWITH_CLOSEDIALOG(WPARAM wParam,LPARAM lparam)
 
 		 pUDPSocket = new ClientUdpSocket();
 
-		 bool iscreate=pUDPSocket->Create(6801,SOCK_DGRAM);
+		 bool iscreate=pUDPSocket->Create(CPublic::LOCAL_RECEVED_STREAM_PORT,SOCK_DGRAM);
 
-		 bool isbind=pUDPSocket->Bind(6801,"127.0.0.1");
+		 bool isbind=pUDPSocket->Bind(CPublic::LOCAL_RECEVED_STREAM_PORT,"127.0.0.1");
+
+		// easyRTP = new CST_EasyRTP();
+
 		 
 		if(iscreate){
 
+			
+
 			CPublic::setUdpClientSocket(pUDPSocket);
 
-			 printf("UDP连接创建成功\n");
+			//easyRTP->RTPReceive();
+
+			 printf("RTP连接创建成功\n");
+
+		   /* CWinThread* m_pThread=AfxBeginThread(MyThreadFunction,(LPVOID)easyRTP);
+
+			 if(NULL == m_pThread)
+			 {
+				 printf("创建新的线程出错！\n");
+			}else{
+				 printf("创建新的线程成功！\n");
+			 }*/
 
 		}else
-
 			printf("UDP连接创建失败\n");
-
-		if(isbind){
-
-			printf("UDP连接绑定成功\n");
-
-		}else
-
-			printf("UDP连接绑定失败\n");
 
 	}else if(info[7]==48){
 		
@@ -593,7 +623,7 @@ LRESULT PTTClientControl::DEALWITH_CLOSEDIALOG(WPARAM wParam,LPARAM lparam)
 
 		int   int_result=0;
 
-		int_result |= ((result[0] << 24) & 0xFF000000);
+		int_result |= result[0] & 0xFF;  
 
 		int int_channel_id = channel_id[3] & 0xFF;  
 
@@ -608,15 +638,17 @@ LRESULT PTTClientControl::DEALWITH_CLOSEDIALOG(WPARAM wParam,LPARAM lparam)
 
 			CPublic::currentUserID = int_channel_id;//需要切换频道的ID
 
-			printf("切换频道信息\n");
+			printf("切换频道成功信息\n");
 
 		}else{
 			//切换失败
+
+			printf("切换频道失败信息 %d\n",int_result);
 		}
 
 	}else if(info[7] == 58){
 
-	     printf("临时频道信息");
+	     printf("临时频道信息\n");
 
 		 ClientChannelInfo clientChannelInfo;
 
@@ -646,6 +678,16 @@ LRESULT PTTClientControl::DEALWITH_CLOSEDIALOG(WPARAM wParam,LPARAM lparam)
 
 		  //弹出接听 挂断按钮
 		   dlg.SendMessage(WM_CALLUSER,3,NULL);
+	}else if(info[7] == -111){
+		   
+		if(info[8] == 0){
+			//通道申请失败不可以发送语音对讲
+			printf("通道申请失败\n");
+		}else if(info[8] == 1){
+			//通道申请成功才可以发送语音对讲
+			printf("通道申请成功\n");
+		}
+		
 	}
 
 	delete info;

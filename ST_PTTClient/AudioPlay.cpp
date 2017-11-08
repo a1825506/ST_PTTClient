@@ -29,7 +29,7 @@ void fill_audio(void *udata,Uint8 *stream,int len)
 
 BOOL CAudioPlay::Start()  
 {  
-	 sscanf("decodc.pcm", "%s", outname);
+	 sscanf("decodc1.pcm", "%s", outname);
 
 
 	 if((fp_output = fopen(outname, "wb+")) == NULL) {
@@ -77,12 +77,13 @@ BOOL CAudioPlay::Write(char *pData, int nLen)
 		SDL_PauseAudio(0);  
 		while(audio_len>0)//Wait until finish
 		{
-			printf("≤•∑≈“Ù∆µ%d\n",nLen);
+			printf("≤•∑≈...“Ù∆µ%d\n",nLen);
+			fwrite(pData, sizeof(char), nLen, fp_output);
 			//SDL_Delay(1); 
 		}
 		//memset(pcm_buffer, 0,nLen);
 	}
-	//fwrite(pData, nLen, 2, fp_output);
+	
 	//memcpy(pcm_buffer,pData,nLen);
 	
 
