@@ -14,6 +14,10 @@ CString CPublic::currentUserName;
 
  CString CPublic::currentChannelName="default";
 
+ CString CPublic::serverIP="192.168.8.121";
+
+ int CPublic::serverPort = 13339;
+
 vector<ClientUserInfo> CPublic::V_ClientUserInfo;
 
 vector<ClientChannelInfo> CPublic::V_ClientChannelInfo;
@@ -132,10 +136,22 @@ void CPublic::getCPTTOpus(char* buffer,int len)
 	}
 
 
+}
 
+int CPublic::getCPTTOpusDecode(char buffer[],int len,char* decodebuff)
+{
 
+	int err=0;
 
+	if(CPublic::pTTOpus){
 
+	   err=CPublic::pTTOpus->Opusdecode(buffer,len,decodebuff);
+	}else{
+		printf("±àÂëÊý¾ÝÊ§°Ü%d\n",len);
+
+	}
+
+	return err;
 }
 
 

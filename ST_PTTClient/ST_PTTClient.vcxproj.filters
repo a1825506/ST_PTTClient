@@ -316,10 +316,13 @@
     <ClInclude Include="AudioRecord.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ST_EasyRTP.h">
+    <ClInclude Include="ST_AudioData.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ST_EasyOpus.h">
+    <ClInclude Include="ST_AudioDecoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ST_Thread.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -741,9 +744,6 @@
     <ClCompile Include="..\src\warped_autocorrelation_FIX.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="PTTOpus.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="AudioPlay.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -753,10 +753,16 @@
     <ClCompile Include="AudioRecord.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ST_EasyRTP.cpp">
+    <ClCompile Include="PTTOpus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ST_EasyOpus.cpp">
+    <ClCompile Include="ST_AudioData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_AudioDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_Thread.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

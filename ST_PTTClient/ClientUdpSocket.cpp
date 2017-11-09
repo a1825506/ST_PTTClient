@@ -1,15 +1,38 @@
 #include "StdAfx.h"
 #include "ClientUdpSocket.h"
 #include "CPublic.h"
+
+#include <time.h>
 int count=0;
 
 
-
+CString getTime1()
+{
+	time_t timep;
+	time (&timep);
+	char tmp[64];
+	strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S",localtime(&timep) );
+	return tmp;
+}
 
 ClientUdpSocket::ClientUdpSocket(void)
 {
 
+
 	pTTOpus = new CPTTOpus();
+
+	sprintf(buf, "AudioDecoder%d",1);  
+
+	audioDecoder = new CST_AudioDecoder(buf);
+
+	if(audioDecoder->Start(TRUE)){
+
+		audioDecoder->Resume();
+		audioDecoder->Join(0);
+	}else{
+
+		printf("解码线程启动失败");
+	}
 
 	int ret=pTTOpus->Opusopen(8);
 
@@ -25,7 +48,7 @@ ClientUdpSocket::ClientUdpSocket(void)
 
 	}
 	ClientAddr.sin_family=AF_INET;
-	ClientAddr.sin_addr.S_un.S_addr=inet_addr("139.224.68.157");
+	ClientAddr.sin_addr.S_un.S_addr=inet_addr(CPublic::serverIP);
 	ClientAddr.sin_port=htons(CPublic::SERVER_DESTPORT);
 
 }
@@ -44,14 +67,19 @@ void ClientUdpSocket::OnReceive(int nErrorCode)
 
 	     int recelen=ReceiveFrom(recBuf,1024,(SOCKADDR*)&ClientAddr,&len,0);
 
+		 audioDecoder->addData(recBuf,recelen);
 
-		 char realdata[160]={0};
+		//printf("接收到数据%s\n",getTime1());
 
-		memcpy(realdata,recBuf+24,recelen-24);
+	//	 char realdata[160]={0};
 
-		  pTTOpus->Opusdecode(realdata,160);
+	//	memcpy(realdata,recBuf+12,recelen-12);
+
+	//	  pTTOpus->Opusdecode(realdata,160);
 		  
 	     CSocket::OnReceive(nErrorCode);
+
+		
 }
 
  void ClientUdpSocket::OnSend(int nErrorCode) 
@@ -65,9 +93,6 @@ void ClientUdpSocket::OnReceive(int nErrorCode)
 	int err = SendTo(datas,36,(SOCKADDR *)&ClientAddr,sizeof(ClientAddr),0);
 
 	// int err= SendTo(datas,36,20087,"127.0.0.1",0);
-
-
-	    printf("发送结果 %d \n",err);
 
 		CSocket::OnSend(nErrorCode);
  }
@@ -85,9 +110,11 @@ void ClientUdpSocket::OnReceive(int nErrorCode)
 	 int err = SendTo(data,len,(SOCKADDR *)&ClientAddr,sizeof(ClientAddr),0);
 
 	 // int err= SendTo(datas,36,20087,"127.0.0.1",0);
+	 if(err<0){
+	    printf("发送失败 %d \n",err);
+	 }
 
-
-	 printf("发送结果 %d \n",err);
+	 
 
  }
 

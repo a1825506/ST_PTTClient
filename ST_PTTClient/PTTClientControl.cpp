@@ -104,7 +104,7 @@ void PTTClientControl::OnBnClickedButtonLogin()
 			return;
 		}
 	}
-	if (!pSock->Connect(_T("139.224.68.157"), 13339))    //连接服务器
+	if (!pSock->Connect(CPublic::serverIP, CPublic::serverPort))    //连接服务器
 	{
 		AfxMessageBox(_T("连接服务器失败！"));
 
@@ -157,15 +157,7 @@ void PTTClientControl::OnBnClickedButtonLogin()
 UINT PTTClientControl:: MyThreadFunction( LPVOID pParam )
 {
 	//函数体
-	CST_EasyRTP* easy_RTP = (CST_EasyRTP*)pParam;
-	
-	if(easy_RTP){
 
-		easy_RTP->RTPReceive();
-		printf("接收线程启动成功\n");
-	}else{
-		printf("接收线程启动失败\n");
-	}
 
 	
 
@@ -685,7 +677,7 @@ LRESULT PTTClientControl::DEALWITH_CLOSEDIALOG(WPARAM wParam,LPARAM lparam)
 			printf("通道申请失败\n");
 		}else if(info[8] == 1){
 			//通道申请成功才可以发送语音对讲
-			printf("通道申请成功\n");
+			//printf("通道申请成功\n");
 		}
 		
 	}

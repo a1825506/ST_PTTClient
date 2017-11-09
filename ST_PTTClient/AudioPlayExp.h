@@ -1,17 +1,31 @@
 #pragma once
 #include <MMSystem.h>
+#include "ST_Thread.h"
+#include "ST_AudioData.h"
+#include <list>   
+using namespace std; 
 #pragma  comment(lib, "winmm.lib")
+using namespace std;  
+//创建一个list容器的实例LISTINT   
+typedef list<CST_AudioData*> LISTPLAY;   
 
-class CAudioPlayExp
+class CAudioPlayExp:public CST_Thread
 {
 public:
-	CAudioPlayExp(void);
+	CAudioPlayExp(const std::string threadName = "noNamed");
 	~CAudioPlayExp(void);
 
 public:
-	BOOL Start();
+
+	bool initAudioTrack();
+
+	bool Start(bool bSuspended/* = false*/);  
+
+	virtual void Run();
+
 	void Stop();
-	BOOL Write(char* pData, int nLen);
+
+	void  addData(char* pData, int nLen);
 
 protected:
 	static void CALLBACK waveOutProc(HWAVEOUT hwo, UINT uMsg, DWORD_PTR dwInstance,   
@@ -21,7 +35,9 @@ protected:
 protected:
 	WAVEFORMATEX	m_waveFormatEx;
 	HWAVEOUT		m_hWaveOut;
-	BOOL			m_bPlay;
-	BOOL			m_bReset;
+	bool  isPlaying;
+	LISTPLAY playList;
+	char outname[80];
+		FILE *fp_output;
 };
 

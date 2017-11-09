@@ -6,12 +6,7 @@
 #include "opus_interface.h"
 CPTTOpus::CPTTOpus(void)
 {
-	m_pAudioPlayer = new CAudioPlayExp();
 
-	if(m_pAudioPlayer->Start()){
-
-		printf("SDL2.0初始化成功\n");
-	}
 
 }
 CString getTime()
@@ -59,22 +54,7 @@ int CPTTOpus::Opusopen(int compression)
 
 		 return -1;
 	 }
-	 sscanf("decodcchar2.pcm", "%s", outname2);
 
-	 if((fp_output2 = fopen(outname2, "wb+")) == NULL) {
-
-		 printf(" opus: Cannot write file %s.\n", outname2);
-
-		 return -1;
-	 }
-	 sscanf("decodcchar3.pcm", "%s", outname3);
-
-	 if((fp_output3 = fopen(outname3, "wb+")) == NULL) {
-
-		 printf(" opus: Cannot write file %s.\n", outname3);
-
-		 return -1;
-	 }
 
 	WebRtcOpus_EncoderCreate(&EncInst, ch, fs);
 
@@ -98,7 +78,7 @@ int CPTTOpus::Opusopen(int compression)
 int  CPTTOpus::Opusencode(char* databuffer,int size)
 {
 
-   	printf("编码前的长度%d\n",size);
+   //	printf("编码前的长度%d\n",size);
 
 	short dwParam1[80] ={0};// new short[1024];
 
@@ -108,17 +88,9 @@ int  CPTTOpus::Opusencode(char* databuffer,int size)
 
 	memcpy(dwParam1,data_buffrt,size);
 
-	fwrite(databuffer, sizeof(char), size, fp_output);
-
 	//fwrite(databuffer, sizeof(char), size, fp_output);
 
-	stream_len = WebRtcOpus_Encode(EncInst, dwParam1,  size, 320, stream);
-
-	WebRtcOpus_Encode
-
-	//err = WebRtcOpus_Decode(DecInst, stream, stream_len, Output, &speechType);
-
-	//fwrite(Output, sizeof(short), err/2, fp_output2);
+	stream_len = WebRtcOpus_Encode(EncInst, dwParam1,  size/2, 160, stream);
 
 	if(stream_len<0){
 
@@ -130,19 +102,16 @@ int  CPTTOpus::Opusencode(char* databuffer,int size)
 
 		//编码后的数据再加上RTP头和自定义头共24字节
 
-			printf("解码后的长度%d\n",stream_len);
-		//CPublic::getUdpClientSocket(stream,stream_len);
+			//printf("解码后的长度%d\n",stream_len);
+		CPublic::getUdpClientSocket(stream,stream_len);
 
 	}
 		return stream_len;
 }
 
 
-int  CPTTOpus::Opusdecode(char databuffer1[],int size)
+int  CPTTOpus::Opusdecode(char databuffer1[],int size,char *dwParam1)
 {
-
-	printf("接收到数据%d\n",size);
-
 	short  Output[1024]={0};
 
 	 unsigned char* stream_1;
@@ -151,8 +120,8 @@ int  CPTTOpus::Opusdecode(char databuffer1[],int size)
 
 	err = WebRtcOpus_Decode(DecInst, stream, size, Output, &speechType);
 
-	fwrite(Output, sizeof(short), err, fp_output);
-
+	
+		fwrite(Output, sizeof(short), err/2, fp_output);
 	if(err<0)
 	{
 		printf("解码错误%s\n",getTime());
@@ -164,27 +133,9 @@ int  CPTTOpus::Opusdecode(char databuffer1[],int size)
 
 	    	memcpy(dwParam1,Output,err*2);
 
-			if(m_pAudioPlayer->Write(dwParam1,err*2)){
+		
 
-				printf("正在播放%s\n",getTime());
 
-				//memset(dwParam1, 0, sizeof(char)*err*2);
-
-				//delete dwParam1;
-
-			}else{
-
-				printf("播放错误\n");
-
-			}
-
-			//memset(dwParam1, 0, sizeof(char)*err);
-
-		//	delete dwParam1;
-
+	return err*2;
 	}
-
-	//memset(stream, 0, sizeof(unsigned char)*size);
-
-	return err;
 }

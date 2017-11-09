@@ -41,6 +41,8 @@ public:
 
 	static void  getCPTTOpus(char* pData, int nLen);
 
+	static int getCPTTOpusDecode(char buffer[],int len,char* decodebuff);
+
 
 
 
@@ -55,6 +57,10 @@ public:
 	static CString currentChannelName;
 
 	static int switchChannelID;
+
+	static CString  serverIP;
+
+	static int  serverPort;
 
 	static vector <ClientUserInfo> V_ClientUserInfo;
 

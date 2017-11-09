@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h> 
-#include "AudioPlayExp.h"
+
 #include "AudioPlay.h"
 
 #include "opus_interface.h"
@@ -33,12 +33,14 @@ class CPTTOpus
 	int Opusencode(char* databuff,int size);
 
 	//½âÂë
-	int  Opusdecode(char databuff[],int size);
+	int  Opusdecode(char databuff[],int size,char decodebuff[]);
+
+
 
 	void Opusclose();
 
 public:
-		CAudioPlayExp*		m_pAudioPlayer;
+
 // CAudioPlay*		m_pAudioPlayer;
 	short Output[1024];
 	unsigned char *stream;
