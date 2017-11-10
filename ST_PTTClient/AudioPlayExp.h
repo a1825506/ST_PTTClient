@@ -1,13 +1,13 @@
 #pragma once
 #include <MMSystem.h>
 #include "ST_Thread.h"
-#include "ST_AudioData.h"
+#include "ST_AudioData2.h"
 #include <list>   
 using namespace std; 
 #pragma  comment(lib, "winmm.lib")
 using namespace std;  
 //创建一个list容器的实例LISTINT   
-typedef list<CST_AudioData*> LISTPLAY;   
+typedef list<CST_AudioData2*> LISTPLAY;   
 
 class CAudioPlayExp:public CST_Thread
 {

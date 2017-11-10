@@ -11,21 +11,29 @@ CST_AudioDecoder::CST_AudioDecoder(const std::string threadName): CST_Thread(thr
 
 CST_AudioDecoder::~CST_AudioDecoder(void)
 {
+
 }
 
 void CST_AudioDecoder::addData(char realData[] , int size)
 {
 	CST_AudioData* audioData = new CST_AudioData();
 
-	audioData->setSize(size);
+	char real_data[160]={0};
 
-	char realdata[160]={0};
+	memcpy(real_data,realData+12,size-12);
 
-	memcpy(realdata,realData+12,size-12);
 
-	audioData->setRealData(realdata);
+	audioData->setRealData(real_data);
+
+	audioData->setSize(size-12);
+
+	//CPublic::getCPTTOpusDecode(audioData->getRealData(),audioData->getSize());
 
 	dataList.push_back(audioData);
+
+	//delete audioData;
+
+	
 
 }
 
@@ -63,27 +71,24 @@ void CST_AudioDecoder::Run()
 
 		audioPlay->Join(0);
 
-	}
+		 printf("播放器启动成功\n");
+
+	}else
+		printf("播放器启动失败\n");
 
 	while (isDecoding) {
 
 		while (dataList.size() > 0) {
 
 			 CST_AudioData* encodedData = dataList.front();//返回第一个元素
+            
+			 char *dwParam=CPublic::getCPTTOpusDecode(encodedData->getRealData(),encodedData->getSize());
 
-			 char * decodebuff;
-
-			 int err=CPublic::getCPTTOpusDecode(encodedData->getRealData(),encodedData->getSize(),decodebuff);
-
-			// audioPlay->addData(decodebuff,err);
-
-			 printf("解码后的长度%d\n",err);
-
-			
+		     audioPlay->addData(dwParam,320);
 
 			 dataList.pop_front();//删除第一个元素
 
-			 delete encodedData;
+			 
 		}
 	}
 

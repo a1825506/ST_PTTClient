@@ -28,10 +28,13 @@ ClientUdpSocket::ClientUdpSocket(void)
 	if(audioDecoder->Start(TRUE)){
 
 		audioDecoder->Resume();
+
 		audioDecoder->Join(0);
+
+		printf("解码线程启动成功\n");
 	}else{
 
-		printf("解码线程启动失败");
+		printf("解码线程启动失败\n");
 	}
 
 	int ret=pTTOpus->Opusopen(8);
@@ -67,15 +70,15 @@ void ClientUdpSocket::OnReceive(int nErrorCode)
 
 	     int recelen=ReceiveFrom(recBuf,1024,(SOCKADDR*)&ClientAddr,&len,0);
 
-		 audioDecoder->addData(recBuf,recelen);
+		 printf("接收到数据 %d \n",recelen);
 
-		//printf("接收到数据%s\n",getTime1());
+	    //audioDecoder->addData(recBuf,recelen);
 
-	//	 char realdata[160]={0};
+		// char realdata[160]={0};
 
-	//	memcpy(realdata,recBuf+12,recelen-12);
+		//memcpy(realdata,recBuf+12,recelen-12);
 
-	//	  pTTOpus->Opusdecode(realdata,160);
+		// pTTOpus->Opusdecode(realdata,160);
 		  
 	     CSocket::OnReceive(nErrorCode);
 
@@ -99,17 +102,11 @@ void ClientUdpSocket::OnReceive(int nErrorCode)
 
  void ClientUdpSocket::setSendData(unsigned char *data,int len)
  {
-	 //char datas[36] = {00,00,00, 00, 00 ,00 ,00 ,00 ,00, 00, 00 ,00 ,00, 00 ,00 ,00 ,00 ,00 ,00 ,00, 00, 00 ,00, 00, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-  
-	 //int lenw=sizeof(SOCKADDR_IN);
-	 //int err= SendTo(data,len,(SOCKADDR *)&ClientAddr,lenw,0);
-	 // printf("发送结果 %d \n",lenw);
-	// OnSend(1);
+	
 	 int lenw=sizeof(SOCKADDR_IN);
 
 	 int err = SendTo(data,len,(SOCKADDR *)&ClientAddr,sizeof(ClientAddr),0);
 
-	 // int err= SendTo(datas,36,20087,"127.0.0.1",0);
 	 if(err<0){
 	    printf("发送失败 %d \n",err);
 	 }

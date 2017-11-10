@@ -311,10 +311,10 @@ void CST_PTTClientDlg::OnTimer(UINT nIDEvent)
 	if(1 == nIDEvent){
 		CPublic::heartBeat();
 	}else if(4==nIDEvent){
-		
-		GetDlgItem(IDC_PPTTALK)->SetWindowText("松开停止讲话");
-
 		CPublic::Call();
+		
+
+	
 
 	}
 }
@@ -322,15 +322,17 @@ BOOL CST_PTTClientDlg::PreTranslateMessage(MSG* pMsg)
 {
 	if(pMsg->message == WM_LBUTTONDOWN && pMsg->hwnd == GetDlgItem(IDC_PPTTALK)->m_hWnd){
 		//按下对讲按钮
-		SetTimer(4,100,NULL);
+		CPublic::Call();
+		GetDlgItem(IDC_PPTTALK)->SetWindowText("松开停止讲话");
+		//SetTimer(4,100,NULL);
 		//开启音频采集线程。
 		m_pAudioPlayer = new CAudioRecord();
 		m_pAudioPlayer->Start();
-
+		
 	}
 	if(pMsg->message == WM_LBUTTONUP&& pMsg->hwnd == GetDlgItem(IDC_PPTTALK)->m_hWnd){
 		//抬起对讲按钮
-		KillTimer(4);
+		//KillTimer(4);
 		GetDlgItem(IDC_PPTTALK)->SetWindowText("请按住讲话");
 		//停止音频采集线程
 		m_pAudioPlayer->Stop();

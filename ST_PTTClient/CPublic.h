@@ -41,7 +41,7 @@ public:
 
 	static void  getCPTTOpus(char* pData, int nLen);
 
-	static int getCPTTOpusDecode(char buffer[],int len,char* decodebuff);
+	static char *  getCPTTOpusDecode(char buffer[],int len);
 
 
 

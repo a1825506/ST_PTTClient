@@ -1,6 +1,9 @@
 #pragma once
+#include "ST_AudioEncoder.h"
 #include <MMSystem.h>
+
 #pragma  comment(lib, "winmm.lib")
+
 class CAudioRecord
 {
 public:
@@ -27,5 +30,6 @@ protected:
 	BOOL		  m_bRecord;
 	char outname[80];
 	FILE *fp_output;
+	CST_AudioEncoder* audioEncoder;
 };
 

@@ -28,5 +28,17 @@ char* CST_AudioData::getRealData()
 
 void CST_AudioData::setRealData(char real_Data[])
 {
-	memcpy(this->realData,real_Data,sizeof(real_Data));
+	char realData[160]={0};
+	memcpy(this->realData,real_Data,160);
+}
+
+
+unsigned char* CST_AudioData::getDataBuff()
+{
+	return dataBuff;
+}
+
+void CST_AudioData::setDataBuff(unsigned char* data_Buff)
+{
+	dataBuff = data_Buff;
 }

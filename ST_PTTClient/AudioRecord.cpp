@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "AudioRecord.h"
+
 #include "CPublic.h"
 
 CAudioRecord::CAudioRecord()
@@ -99,16 +100,7 @@ BOOL CAudioRecord::Start()
 
 	m_bRecord = TRUE;
 
-	sscanf("record.pcm", "%s", outname);
 
-
-
-	if((fp_output = fopen(outname, "wb+")) == NULL) {
-
-		printf(" opus: Cannot write file %s.\n", outname);
-
-		exit(1);
-	}
 
 	return TRUE;
 }
@@ -125,7 +117,6 @@ void CAudioRecord::Stop()
 		waveInClose(m_hWaveIn);
 		m_hWaveIn = NULL;
 	}
-	fclose(fp_output);
 
 	m_bRecord = FALSE;
 }
@@ -141,9 +132,8 @@ void CAudioRecord::OnReadData(WPARAM wParam, LPARAM lParam)
 	if (NULL == lpHdr || 0 == lpHdr->dwBytesRecorded)
 		return ;
 
-
-
 	waveInUnprepareHeader(m_hWaveIn, lpHdr, sizeof(WAVEHDR));
+   
 
 	CPublic::getCPTTOpus(lpHdr->lpData,lpHdr->dwBytesRecorded);
 

@@ -33,7 +33,7 @@ class CPTTOpus
 	int Opusencode(char* databuff,int size);
 
 	//½âÂë
-	int  Opusdecode(char databuff[],int size,char decodebuff[]);
+	char *   Opusdecode(char databuff[],int size);
 
 
 
@@ -44,7 +44,7 @@ public:
 // CAudioPlay*		m_pAudioPlayer;
 	short Output[1024];
 	unsigned char *stream;
-	char *dwParam1;
+
 	short stream_len ;
 	short speechType;
 	int err;

@@ -83,7 +83,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>D:\tao\C++\ST_PTTClient\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;jrtplib.lib;jthread.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>jrtplib.lib;jthread.lib;WS2_32.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <DelayLoadDLLs>
       </DelayLoadDLLs>
     </Link>
@@ -200,7 +200,11 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="ST_AudioData.h" />
+    <ClInclude Include="ST_AudioData2.h" />
     <ClInclude Include="ST_AudioDecoder.h" />
+    <ClInclude Include="ST_AudioEncoder.h" />
+    <ClInclude Include="ST_AudioSender.h" />
+    <ClInclude Include="ST_EastRTP.h" />
     <ClInclude Include="ST_PTTClient.h" />
     <ClInclude Include="ST_PTTClientDlg.h" />
     <ClInclude Include="ST_Thread.h" />
@@ -349,7 +353,11 @@
     <ClCompile Include="PTTClientControl.cpp" />
     <ClCompile Include="PTTOpus.cpp" />
     <ClCompile Include="ST_AudioData.cpp" />
+    <ClCompile Include="ST_AudioData2.cpp" />
     <ClCompile Include="ST_AudioDecoder.cpp" />
+    <ClCompile Include="ST_AudioEncoder.cpp" />
+    <ClCompile Include="ST_AudioSender.cpp" />
+    <ClCompile Include="ST_EastRTP.cpp" />
     <ClCompile Include="ST_PTTClient.cpp" />
     <ClCompile Include="ST_PTTClientDlg.cpp" />
     <ClCompile Include="ST_Thread.cpp" />

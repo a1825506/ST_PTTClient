@@ -7,16 +7,23 @@ public:
 
 	int getSize();
 
+
 	void setSize(int size);
 
 	char* getRealData();
 
 	void setRealData(char realData[]);
 
+	unsigned char* getDataBuff();
+
+	void setDataBuff(unsigned char* data_Buff);
+
 public:
 
 	int size;
 
-	char realData[1024];
+	unsigned char *dataBuff;
+
+	char realData[160];
 };
 

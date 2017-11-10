@@ -138,20 +138,20 @@ void CPublic::getCPTTOpus(char* buffer,int len)
 
 }
 
-int CPublic::getCPTTOpusDecode(char buffer[],int len,char* decodebuff)
+char * CPublic::getCPTTOpusDecode(char buffer[],int len)
 {
 
-	int err=0;
+	 char *dwParam;
 
 	if(CPublic::pTTOpus){
 
-	   err=CPublic::pTTOpus->Opusdecode(buffer,len,decodebuff);
+	   dwParam=CPublic::pTTOpus->Opusdecode(buffer,len);
 	}else{
 		printf("±àÂëÊı¾İÊ§°Ü%d\n",len);
 
 	}
 
-	return err;
+	return dwParam;
 }
 
 

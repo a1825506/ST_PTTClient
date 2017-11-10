@@ -31,6 +31,8 @@ bool  CAudioPlayExp::initAudioTrack()
 	DWORD volume = 0xffffffff;
 	waveOutSetVolume(m_hWaveOut, volume);
 
+
+
 	return TRUE;
 }
 
@@ -81,7 +83,9 @@ void CAudioPlayExp::Stop()
 
 void  CAudioPlayExp::addData(char pData[], int nLen)
 {
-	CST_AudioData* decodedData = new CST_AudioData();
+	CST_AudioData2* decodedData = new CST_AudioData2();
+
+	
 
 	decodedData->setSize(nLen);
 
@@ -109,7 +113,7 @@ void CAudioPlayExp::Run()
 	{
 		while (playList.size() > 0) {
 
-			CST_AudioData* playData = playList.front();//返回第一个元素
+			CST_AudioData2* playData = playList.front();//返回第一个元素
 
 			WAVEHDR* pWaveHdr = new WAVEHDR;
 
@@ -125,7 +129,7 @@ void CAudioPlayExp::Run()
 
 			playList.pop_front();//删除第一个元素
 
-			delete playData;
+			//delete playData;
 
 		}
 			 

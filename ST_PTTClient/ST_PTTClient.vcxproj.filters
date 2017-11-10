@@ -325,6 +325,18 @@
     <ClInclude Include="ST_Thread.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ST_AudioData2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ST_AudioEncoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ST_AudioSender.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ST_EastRTP.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ST_PTTClient.cpp">
@@ -763,6 +775,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ST_Thread.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_AudioData2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_AudioEncoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_AudioSender.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_EastRTP.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

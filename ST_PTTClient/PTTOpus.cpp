@@ -110,18 +110,18 @@ int  CPTTOpus::Opusencode(char* databuffer,int size)
 }
 
 
-int  CPTTOpus::Opusdecode(char databuffer1[],int size,char *dwParam1)
+char *  CPTTOpus::Opusdecode(char databuffer1[],int size)
 {
-	short  Output[1024]={0};
+	char *dwParam;
 
-	 unsigned char* stream_1;
+	short  Output[1024]={0};
 
 	memcpy(stream,databuffer1,size);
 
 	err = WebRtcOpus_Decode(DecInst, stream, size, Output, &speechType);
 
-	
-		fwrite(Output, sizeof(short), err/2, fp_output);
+
+
 	if(err<0)
 	{
 		printf("½âÂë´íÎó%s\n",getTime());
@@ -129,13 +129,10 @@ int  CPTTOpus::Opusdecode(char databuffer1[],int size,char *dwParam1)
 	else
 	{
 
-		    dwParam1 = new char[err*2];
+		    dwParam = new char[err*2];
 
-	    	memcpy(dwParam1,Output,err*2);
+	    	memcpy(dwParam,Output,err*2);
 
-		
-
-
-	return err*2;
 	}
+	return dwParam;
 }
